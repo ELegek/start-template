@@ -1,0 +1,22 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+  --font-family: "Jost ", sans-serif;
+  --font-size: 16px;
+  --content-width: 1160px;
+  --content-fluid-width: 1790px;
+  --content-min-width: 320px;
+  --container-offset: 15px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+  --container-fluid-width: calc(
+    var(--content-fluid-width) + (var(--container-offset) * 2)
+  );
+
+  // colors
+  --main-color: #141024;
+  --light-color: #fff;
+  --accent-color: #d52027;
+  --dark-color: #141024;
+  --text-color: rgba(#141024, 0.7);
+}
