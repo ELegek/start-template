@@ -85,5 +85,9 @@ console.log(mobileCheck());
 
 // validateForms('.form-1', rules1, afterForm);
 
-/* Динамический адаптив */
+// Динамический адаптив
 // import "./functions/dynamic_adapt.js";
+
+// Реализация spoller
+// import * as functionsUI from "./functions/spollers";
+// functionsUI.spollers();
