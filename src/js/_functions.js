@@ -3,6 +3,7 @@
 
 // Определение операционной системы на мобильных
 import { mobileCheck } from "./functions/mobile-check";
+import * as functionsUI from "./files/functions";
 console.log(mobileCheck());
 
 // Определение ширины экрана
@@ -89,5 +90,7 @@ console.log(mobileCheck());
 // import "./functions/dynamic_adapt.js";
 
 // Реализация spoller
-// import * as functionsUI from "./functions/spollers";
 // functionsUI.spollers();
+
+// Реализация tabs
+// functionsUI.tabs();
