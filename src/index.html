@@ -7,6 +7,20 @@
   <div class="site-container">
     @include('partials/header.html')
     <main class="main">
+
+      <div data-showmore="size" data-showmore-media="768,min" class="block">
+        <div data-showmore-content="200" class="block__content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+          voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+          voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+          </в>
+          <button hidden data-showmore-button="1000" type="button" class="block__more">
+            <span>Показать еще</span>
+            <span>Скыть</span>
+          </button>
+        </div>
+      </div>
     </main>
     @include('partials/footer.html')
     <!-- @include('html/h1.html') пример include -->

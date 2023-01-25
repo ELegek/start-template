@@ -475,7 +475,7 @@ $options: (
 
 Spollers - это заголовок, при клике на который под ним разворачивается некий контент.
 
-Основные возможности
+## Основные возможности
 
 1. Использование множества блоков со спойлерами
 2. Отключение/включение функционлана на определенной ширине экрана
@@ -483,7 +483,7 @@ Spollers - это заголовок, при клике на который по
 4. Возможность анимированного открытия
 5. Семантика
 
-Подключение функционала
+## Подключение функционала
 
 [HTML] В нужном месте вызвать сниппет spollers (классы можно заменить на нужные). Либо вручную создать структуру с соответствующими дата-атрибутами. Добавление класса `_spoller-active` для элемента с атрибутом `data-spoller` сделает спойлер активным (открытым)
 
@@ -509,7 +509,7 @@ Spollers - это заголовок, при клике на который по
 
 [SCSS] Если вы хотите сразу посмотреть на работу спойлеров и оставить классы предложенные сниппетом, вы можете раскомментировать строку "@import "@import "./base/spollers";" в файле src/scss/main.scss - это подключит базовые стили, их можно отредактировать под свои нужды.
 
-Использование функционала
+## Использование функционала
 
 Отключение/включение функционала на определенной ширине экрана
 
@@ -524,7 +524,7 @@ Spollers - это заголовок, при клике на который по
 </div>
 ```
 
-Включение режима "аккордеон"
+## Включение режима "аккордеон"
 
 Для того, чтобы включить режим "аккордеон", необходимо для элемента с атрибутом `data-spollers` добавить атрибут `data-one-spoller`
 
@@ -536,7 +536,7 @@ Spollers - это заголовок, при клике на который по
 
 Теперь при открытии спойлера, другой открытый спойлер в блоке закрывается
 
-Управление скоростью анимации
+## Управление скоростью анимации
 
 Для того, чтобы управлять временем анимации открытия/закрытия спойлера, необходимо для элемента с атрибутом `data-spollers` добавить `data-spollers-speed`, а в качестве значения указать время анимации в миллисекундах (по умолчанию 500).
 
@@ -546,7 +546,7 @@ Spollers - это заголовок, при клике на который по
 </div>
 ```
 
-Закрытие при клике вне спойлера
+## Закрытие при клике вне спойлера
 
 Если необходимо закрывать спойлер(ы) при клике вне блока ("на пустом месте"), то следует добавить нужному заголовку(кам) атрибут `data-spoller-close`
 
@@ -555,6 +555,116 @@ Spollers - это заголовок, при клике на который по
     <div class="spollers__item">
       <button type="button" data-spoller data-spoller-close class="spollers__title">Заголовок спойлера1</button>
       <div class="spollers__body">Контент спойлера1</div>
+    </div>
+  </div>
+```
+
+### Модуль "Показать еще"
+
+Модуль "показать еще" позволяет изначально скрыть часть текста или элементов списка показывая только указанную высоту либо количество элементов. Есть возможность включать функционал на определенной ширине экрана (брейкпоинте).
+
+## Подключение функционала
+
+[HTML] В нужном месте вызвать сниппет showmore (классы заменить на нужные). Либо вручную создать структуру где для оболочки добавлен атрибут `data-showmore`, для дочернего элемента `data-showmore-content` и для кнопки `data-showmore-button`. Кнопку изначально нужно скрыть добавив атрибут `hidden` и добавить два тега <span> с текстом показ и скрытия контента:
+
+```
+  <div data-showmore class="block">
+    <div data-showmore-content class="block__content"></div>
+    <button hidden data-showmore-button type="button" class="block__more">
+      <span>Показатьеще</span>
+      <span>Скыть</span>
+    </button>
+  </div>
+```
+
+[JS] В файле scr/js/\_functions.js раскоментировать строку functionsUI.showMore();
+[SCSS] Раскоментировать строку @import "./base/showmore"; в файле src/scss/main.scss - это подключит базовые стили, отредактировать под свои нужды
+
+## Использование функционала
+
+В элемент с атрибутом `data-showmore-content` добавляем текст и прочий контент, либо, если это список (UL/OL) элементы списка (LI).
+
+В зависимости от того, какой контент используется (текст или элементы списка) указываем значение для атрибута `data-showmore`:
+
+1. `size` - ограничение по высоте блока (по умолчанию)
+2. `items` - ограничение количества выводимых элементов списка
+
+```
+  <div data-showmore="items" class="block">
+    <ul data-showmore-content class="block__content">
+      <li>Пункт №1</li>
+      <li>Пункт №2</li>
+      <li>Пункт №3</li>
+      <li>Пункт №4</li>
+      <li>Пункт №5</li>
+    </ul>
+    <button hidden data-showmore-button type="button" class="block__more">
+      <span>Показать еще</span>
+      <span>Скыть</span>
+    </button>
+  </div>
+```
+
+В зависимости от того, какой тип выбран, указываем значение для атрибута data-showmore-content:
+
+1. Высота блока в пикселях (число без px, по умолчанию 150)
+2. Количество выводимых элементов списка(число, по умолчанию 3)
+
+```
+  <div data-showmore="items" class="block">
+    <div data-showmore-content="200" class="block__content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      </в>
+      <button hidden data-showmore-button type="button" class="block__more">
+        <span>Показать еще</span>
+        <span>Скыть</span>
+      </button>
+    </div>
+  </div>
+```
+
+Если контента будет меньше чем указанное ограничение, кнопка "Показать еще" не будет показана. В противном случае, контент ограничится по высоте либо по количеству элементов и при клике на кнопку будет показан полностью, также, к элементу с атрибутом `data-showmore` добавится класс `_showmore-active` (первый спан в кнопке будет скрыт а второй показан). Повторный клик вернет ограничение.
+
+Есть возможность управлять скоростью разворачивания контента, для этого следует указать значение атрибута `data-showmore-button` в миллисекундах (по умолчанию 500)
+
+```
+  <div data-showmore="size" class="block">
+    <div data-showmore-content="200" class="block__content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      </в>
+      <button hidden data-showmore-button="1000" type="button" class="block__more">
+        <span>Показать еще</span>
+        <span>Скыть</span>
+      </button>
+    </div>
+  </div>
+```
+
+## Включение функционала на определенной ширине экрана
+
+Для того чтобы использовать функционал на определенной ширине экрана, к объекту с атрибутом `data-showmore` добавляем атрибут `data-showmore-media` где, через запятую, указываем нужную ширину, а также тип:
+
+1. max(по умолчанию) - функционал включится на ширине меньше чем указанная
+2. min - функционал включится на ширине большей чем указанная
+
+```
+  <div data-showmore="size" data-showmore-media="768,min" class="block">
+    <div data-showmore-content="200" class="block__content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quasi nemo quaerat accusantium placeat
+      voluptatibus rerum eos adipisci totam ut animi, quae hic laudantium sit odit corrupti aut perspiciatis natus?
+      </в>
+      <button hidden data-showmore-button="1000" type="button" class="block__more">
+        <span>Показать еще</span>
+        <span>Скыть</span>
+      </button>
     </div>
   </div>
 ```

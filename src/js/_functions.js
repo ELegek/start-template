@@ -94,3 +94,6 @@ console.log(mobileCheck());
 
 // Реализация tabs
 // functionsUI.tabs();
+
+// Реализация showmore
+// functionsUI.showMore();
